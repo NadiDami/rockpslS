@@ -2,8 +2,8 @@ describe("Rock-Paper-Scissors-Lizard-Spock", function() {
 
   beforeEach(function() {
 
-    player1 = new Player();
-    player2 = new Player();
+    player1 = new Player('Nadia');
+    player2 = new Player('Bob');
     game = new Game(player1, player2);
   
   });
@@ -211,5 +211,24 @@ describe("Rock-Paper-Scissors-Lizard-Spock", function() {
     });
 
   });
+
+  describe('printing results', function() {
+
+    it('should print out scissors decapitate lizard', function() {
+
+      player1.picks('scissors');
+      player2.picks('lizard');
+      expect(game.result()).toBe("scissors decapitate lizard. Nadia wins");
+      });
+
+    it('should print out Spock vaporizes rock', function() {
+
+      player1.picks('rock');
+      player2.picks('Spock');
+      expect(game.result()).toBe("Spock vaporizes rock. Bob wins");
+      });
+
+
+     });
 
 });
