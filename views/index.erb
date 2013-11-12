@@ -1,0 +1,52 @@
+<html>
+<head>
+  <title>Rock, paper, scisssors, lizard, Spock</title>
+  <link rel="stylesheet" type="text/css" href="/stylesheets/application.css">
+  <link href='http://fonts.googleapis.com/css?family=Poiret+One' rel='stylesheet' type='text/css'>
+</head>
+<body>
+    <h1>rock, paper, scissors, lizard, Spock</h1>
+    <img data-pick='rock' src="/images/rock.jpg" >
+    <img data-pick='paper' src="/images/paper.jpg" >
+    <img data-pick='scissors' src="/images/scissors.jpg" >
+    <img data-pick='lizard' src="/images/lizard.png" >
+    <img data-pick='Spock' src="/images/Spock.jpg" >
+    <br>
+    <br>
+    <article id="result"></article>
+    <br>
+    <table>
+    <tr><th class="heading">Your score</th><th class="heading">Computer score</th></tr>
+    <tr><td class="score you">0</td><td class="score computer">0</td></tr>
+    </table>
+    
+
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+  <script src="./lib/rockpslS.js"></script>
+  <script>
+
+    var player1= new Player('computer');
+    var player2 = new Player('you');
+
+    var game = new Game(player1, player2);
+    var choices = ['rock', 'paper', 'scissors', 'lizard', 'Spock']
+
+    var player1_score = 0
+    var player2_score = 0
+
+
+  $('img').on('click', function() {
+    player1.picks(choices[Math.floor(Math.random() * 5)]);
+    player2.picks($(this).data('pick'));
+    $('#result').text(game.result() + ".");
+
+    if (game.winner()) {
+      $.post('/score', { winner: game.winner().name }, function(resp) {
+        $('.score.' + game.winner().name).html(resp);
+      })
+    }
+  });
+  </script>
+</body>
+</html>
+
