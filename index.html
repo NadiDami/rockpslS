@@ -1,0 +1,37 @@
+<html>
+<head>
+  <title>Rock, paper, scisssors, lizard, Spock</title>
+  <link rel="stylesheet" type="text/css" href="public/stylesheets/application.css">
+  <link href='http://fonts.googleapis.com/css?family=Poiret+One' rel='stylesheet' type='text/css'>
+</head>
+<body>
+    <h1>rock, paper, scissors, lizard, Spock</h1>
+    <img data-pick='rock' src="public/images/rock.jpg" >
+    <img data-pick='paper' src="public/images/paper.jpg" >
+    <img data-pick='scissors' src="public/images/scissors.jpg" >
+    <img data-pick='lizard' src="public/images/lizard.png" >
+    <img data-pick='Spock' src="public/images/Spock.jpg" >
+    <br>
+    <br>
+    <div id="result"></div>
+
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+  <script src="lib/rockpslS.js"></script>
+  <script>
+
+    var player1= new Player('computer');
+    var player2 = new Player('you');
+
+    var game = new Game(player1, player2);
+    var choices = ['rock', 'paper', 'scissors', 'lizard', 'Spock']
+
+
+  $('img').on('click', function() {
+     player1.picks(choices[Math.floor(Math.random() * 5)]);
+     player2.picks($(this).data('pick'));
+     $('#result').text(game.result() + ".");
+  });
+  </script>
+</body>
+</html>
+

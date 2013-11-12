@@ -1,0 +1,19 @@
+body {
+  text-align: center;
+}
+
+h1 {
+  font-family: 'Poiret One', cursive;
+  font-size: 50px;
+  color: #CD5C5C;
+}
+
+#result {
+  font-family: 'Poiret One', cursive;
+  font-size: 30px
+}
+
+img:hover {
+  border: 5px solid #CD5C5C;
+  border-radius: 10px;
+}
