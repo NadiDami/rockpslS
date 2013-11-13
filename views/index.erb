@@ -31,9 +31,6 @@
     var game = new Game(player1, player2);
     var choices = ['rock', 'paper', 'scissors', 'lizard', 'Spock']
 
-    var player1_score = 0
-    var player2_score = 0
-
 
   $('img').on('click', function() {
     player1.picks(choices[Math.floor(Math.random() * 5)]);
@@ -41,9 +38,11 @@
     $('#result').text(game.result() + ".");
 
     if (game.winner()) {
-      $.post('/score', { winner: game.winner().name }, function(resp) {
-        $('.score.' + game.winner().name).html(resp);
-      })
+      // $.post('/score', { winner: game.winner().name }, function(resp) {
+      //   $('.score.' + game.winner().name).html(resp);
+      // })
+      winner_box = $('.score.' + game.winner().name);
+      winner_box.html(parseInt(winner_box.html(),10) +1);
     }
   });
   </script>

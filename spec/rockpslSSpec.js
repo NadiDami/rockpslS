@@ -219,7 +219,8 @@ describe("Rock-Paper-Scissors-Lizard-Spock", function() {
       player1.picks('scissors');
       player2.picks('lizard');
       expect(game.result()).toBe("scissors decapitate lizard. Nadia wins");
-      });
+
+    });
 
     it('should print out Spock vaporizes rock', function() {
 
@@ -229,6 +230,5 @@ describe("Rock-Paper-Scissors-Lizard-Spock", function() {
       });
 
 
-     });
-
+  });
 });
